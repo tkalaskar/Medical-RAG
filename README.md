@@ -152,20 +152,159 @@ If I continued this project, I would:
 
 ## Setup & Usage
 
-### Prerequisites
+You can run the project in a Docker container or directly with Python. Docker is
+the recommended option when you want the same environment across macOS, Windows,
+and Linux.
+
+### Option A: Run with Docker
+
+#### Docker prerequisites
+
+- Docker Desktop or Docker Engine configured to run Linux containers
+- A Hugging Face account and access token
+- Internet access for the image build, the initial embedding-model download,
+  and hosted LLM requests
+
+The image uses Docker's multi-architecture Python base image and can be built
+natively on common `linux/amd64` and `linux/arm64` hosts. This covers Intel/AMD
+computers, Apple Silicon machines, and Windows systems running Linux containers.
+
+#### 1. Clone and configure the project
+
+```bash
+git clone <your-repository-url>
+cd "RAG Medical Bot"
+cp .env.example .env
+```
+
+On Windows PowerShell, copy the environment file with:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Open `.env` and add your Hugging Face token:
+
+```dotenv
+HF_TOKEN=hf_your_token_here
+HUGGINGFACE_REPO_ID=Qwen/Qwen2.5-7B-Instruct
+```
+
+`HUGGINGFACE_REPO_ID` is optional, and `HUGGINGFACEHUB_API_TOKEN` may be used
+instead of `HF_TOKEN`. Never commit the populated `.env` file.
+
+#### 2. Build the image
+
+```bash
+docker build -t rag-medical-bot .
+```
+
+The Docker build:
+
+- selects the appropriate base image for the host CPU architecture;
+- installs the Python and FAISS runtime dependencies;
+- includes the application, reference document, and existing FAISS index;
+- excludes local virtual environments, logs, Git metadata, and `.env`;
+- creates a non-root runtime user.
+
+The first build can take several minutes because the machine-learning
+dependencies are comparatively large. Later builds reuse Docker's cached
+dependency layer when `requirements.txt` has not changed.
+
+#### 3. Start the container
+
+```bash
+docker run --rm --name rag-medical-bot \
+  --env-file .env \
+  -p 5050:5050 \
+  rag-medical-bot
+```
+
+Open [http://localhost:5050](http://localhost:5050).
+
+For PowerShell, the same command can be entered on one line:
+
+```powershell
+docker run --rm --name rag-medical-bot --env-file .env -p 5050:5050 rag-medical-bot
+```
+
+The host port can be changed without rebuilding the image. For example, this
+serves the application at `http://localhost:8080`:
+
+```bash
+docker run --rm --env-file .env -p 8080:5050 rag-medical-bot
+```
+
+The internal port is also configurable for platforms that inject a `PORT`
+environment variable:
+
+```bash
+docker run --rm --env-file .env -e PORT=8080 -p 8080:8080 rag-medical-bot
+```
+
+#### 4. Optional: persist cache and logs
+
+Containers are disposable by default. Named volumes retain the downloaded
+embedding model and application logs between container runs:
+
+```bash
+docker volume create rag-model-cache
+docker volume create rag-logs
+
+docker run --rm --name rag-medical-bot \
+  --env-file .env \
+  -p 5050:5050 \
+  -v rag-model-cache:/app/.cache \
+  -v rag-logs:/app/logs \
+  rag-medical-bot
+```
+
+#### Build a multi-platform image for distribution
+
+A normal `docker build` targets the current machine. To publish one image tag
+that supports both AMD64 and ARM64 Linux hosts, use a buildx builder and push
+the result to a container registry:
+
+```bash
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  -t <registry-user>/rag-medical-bot:latest \
+  --push .
+```
+
+Replace `<registry-user>` with your Docker Hub or other registry namespace.
+
+#### Docker troubleshooting
+
+- **Docker daemon connection error:** start Docker Desktop or the Docker Engine,
+  then retry the build.
+- **Port already allocated:** map a different host port, such as
+  `-p 8080:5050`.
+- **Missing token:** confirm `.env` contains `HF_TOKEN` and that
+  `--env-file .env` is present in the run command.
+- **Model download or inference failure:** confirm the container has internet
+  access and the Hugging Face token can access the configured model.
+- **FAISS index missing:** build the index locally, then rebuild the image so
+  `vectorstore/db_faiss/` is copied into it.
+- **Apple Silicon deployment to an AMD64-only host:** either build on the target
+  machine or publish the multi-platform image shown above.
+
+### Option B: Run directly with Python
+
+#### Python prerequisites
 
 - Python **3.10**
 - A Hugging Face account and access token
 - Internet access for the initial embedding-model download and hosted LLM requests
 
-### 1. Clone the repository
+#### 1. Clone the repository
 
 ```bash
 git clone <your-repository-url>
 cd "RAG Medical Bot"
 ```
 
-### 2. Create and activate a virtual environment
+#### 2. Create and activate a virtual environment
 
 ```bash
 python3.10 -m venv .venv
@@ -179,7 +318,7 @@ py -3.10 -m venv .venv
 .venv\Scripts\activate
 ```
 
-### 3. Install dependencies
+#### 3. Install dependencies
 
 ```bash
 python -m pip install --upgrade pip
@@ -189,7 +328,7 @@ python -m pip install -r requirements.txt
 The requirements file pins the dependency versions used to verify PDF ingestion,
 FAISS persistence, retrieval, and Hugging Face inference.
 
-### 4. Configure environment variables
+#### 4. Configure environment variables
 
 Copy the example file:
 
@@ -213,7 +352,7 @@ HUGGINGFACE_REPO_ID=Qwen/Qwen2.5-7B-Instruct
 
 Never commit the populated `.env` file.
 
-### 5. Add or verify the source document
+#### 5. Add or verify the source document
 
 The default configuration expects:
 
@@ -223,7 +362,7 @@ data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
 
 If you use a different document, update `DATA_PATH` in `app/config/config.py`. Make sure you have permission to use and distribute the source material.
 
-### 6. Build the FAISS index
+#### 6. Build the FAISS index
 
 ```bash
 python -m app.components.data_loader
@@ -238,7 +377,7 @@ vectorstore/db_faiss/index.pkl
 
 Re-run this command whenever the source document or embedding configuration changes.
 
-### 7. Start the web application
+#### 7. Start the web application
 
 ```bash
 python -m app.application
@@ -246,7 +385,7 @@ python -m app.application
 
 Open [http://127.0.0.1:5050](http://127.0.0.1:5050) in a browser.
 
-### 8. Ask a question
+#### 8. Ask a question
 
 Enter a medical question in the chat form. The application will:
 
@@ -275,6 +414,8 @@ Enter a medical question in the chat form. The application will:
 ├── data/                       # Reference document
 ├── vectorstore/db_faiss/       # Persisted vector index
 ├── logs/                       # Runtime logs
+├── Dockerfile                  # Portable container build and runtime definition
+├── .dockerignore               # Excludes secrets and host-specific build files
 ├── .env.example
 ├── requirements.txt
 └── setup.py
@@ -288,6 +429,10 @@ Enter a medical question in the chat form. The application will:
 - The hosted model requires a working external provider and network connection.
 - The QA chain is currently initialized per request, increasing response latency.
 - Flask's built-in server is intended for development, not production.
+- The Docker image also uses Flask's built-in server and should be placed behind
+  a production WSGI server or reverse proxy before public deployment.
+- The image bundles the current PDF and FAISS index at build time; changes to
+  either require rebuilding the image or mounting replacement files.
 - The current corpus is a fixed reference document and may not reflect current clinical guidance.
 
 ## License
