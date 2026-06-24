@@ -1,8 +1,9 @@
-langchain
-langchain_community
-langchain_huggingface
+numpy==1.26.4
 faiss-cpu
-pypdf
-huggingface_hub
-flask
+langchain-community
+langchain-core
+langchain-text-splitters
+langchain-huggingface
+huggingface-hub
 python-dotenv
+pypdf

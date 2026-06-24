@@ -1,0 +1,17 @@
+2026-06-25 04:30:16,143 - INFO - Loading PDF files from the specified path.
+2026-06-25 04:30:16,143 - INFO - Loading PDF file from path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 04:30:23,915 - INFO - Loaded 759 documents from the specified path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 04:30:23,916 - INFO - Loaded 759 PDF files from the specified path.
+2026-06-25 04:30:23,916 - INFO - Splitting documents into chunks with size 500 and overlap 50
+2026-06-25 04:30:24,012 - INFO - Created 7080 text chunks from the documents
+2026-06-25 04:30:24,013 - INFO - Creating FAISS vector store from 7080 text chunks.
+2026-06-25 04:30:24,013 - INFO - FAISS vector store output path: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 04:30:24,013 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 04:30:24,117 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 04:30:24,410 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping "HTTP/1.1 200 OK"
+2026-06-25 04:30:24,697 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-25 04:30:59,670 - INFO - HTTP Request: POST https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2/pipeline/feature-extraction "HTTP/1.1 200 OK"
+2026-06-25 04:31:15,171 - INFO - Loading faiss.
+2026-06-25 04:31:15,199 - INFO - Successfully loaded faiss.
+2026-06-25 04:31:15,312 - INFO - FAISS vector store created successfully at: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 04:31:15,312 - INFO - Vector store created successfully.

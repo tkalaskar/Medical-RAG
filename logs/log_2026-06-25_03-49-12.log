@@ -1,0 +1,6 @@
+2026-06-25 03:49:12,032 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 03:49:12,065 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 03:49:12,379 - INFO - HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-06-25 03:49:12,615 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2?expand=inferenceProviderMapping "HTTP/1.1 200 OK"
+2026-06-25 03:49:12,925 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-25 03:49:13,008 - INFO - HTTP Request: POST https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2/pipeline/feature-extraction "HTTP/1.1 401 Unauthorized"

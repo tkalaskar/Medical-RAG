@@ -1,0 +1,5 @@
+2026-06-25 04:01:48,656 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 04:01:48,682 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 04:01:48,995 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-mpnet-base-v2?expand=inferenceProviderMapping "HTTP/1.1 200 OK"
+2026-06-25 04:01:49,240 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-mpnet-base-v2 "HTTP/1.1 200 OK"
+2026-06-25 04:01:49,635 - INFO - HTTP Request: POST https://router.huggingface.co/hf-inference/models/sentence-transformers/all-mpnet-base-v2/pipeline/feature-extraction "HTTP/1.1 200 OK"

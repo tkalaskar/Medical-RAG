@@ -1,0 +1,1 @@
+2026-06-25 03:58:26,482 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :'NoneType' object has no attribute 'strip' | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :12

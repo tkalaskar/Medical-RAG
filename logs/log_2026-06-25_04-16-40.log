@@ -1,0 +1,1 @@
+2026-06-25 04:16:40,032 - ERROR - Failed to process and store PDF files. | Error :name 'text_chunks' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/data_loader.py | Line :14

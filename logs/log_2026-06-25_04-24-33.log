@@ -1,0 +1,4 @@
+2026-06-25 04:24:33,977 - INFO - Loading PDF file from path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 04:24:41,944 - INFO - Loaded 759 documents from the specified path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 04:24:41,944 - INFO - Splitting documents into chunks with size 500 and overlap 50
+2026-06-25 04:24:42,052 - INFO - Created 7080 text chunks from the documents

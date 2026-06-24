@@ -1,0 +1,43 @@
+2026-06-25 04:25:47,753 - INFO - Loading PDF files from the specified path.
+2026-06-25 04:25:47,754 - INFO - Loading PDF file from path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 04:25:55,734 - INFO - Loaded 759 documents from the specified path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 04:25:55,734 - INFO - Loaded 759 PDF files from the specified path.
+2026-06-25 04:25:55,734 - INFO - Splitting documents into chunks with size 500 and overlap 50
+2026-06-25 04:25:55,829 - INFO - Created 7080 text chunks from the documents
+2026-06-25 04:25:55,829 - INFO - Creating FAISS vector store from 7080 text chunks.
+2026-06-25 04:25:55,829 - INFO - FAISS vector store output path: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 04:25:55,830 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 04:25:55,936 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 04:25:56,244 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-mpnet-base-v2?expand=inferenceProviderMapping "HTTP/1.1 200 OK"
+2026-06-25 04:25:56,492 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-mpnet-base-v2 "HTTP/1.1 200 OK"
+2026-06-25 04:27:58,393 - INFO - HTTP Request: POST https://router.huggingface.co/hf-inference/models/sentence-transformers/all-mpnet-base-v2/pipeline/feature-extraction "HTTP/1.1 504 Gateway Time-out"
+2026-06-25 04:27:58,398 - ERROR - Failed to create FAISS vector store at: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 772, in hf_raise_for_status
+    response.raise_for_status()
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '504 Gateway Time-out' for url 'https://router.huggingface.co/hf-inference/models/sentence-transformers/all-mpnet-base-v2/pipeline/feature-extraction'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 65, in create_vector_store
+    vector_store = FAISS.from_documents(
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_core/vectorstores/base.py", line 814, in from_documents
+    return cls.from_texts(texts, embedding, metadatas=metadatas, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 1043, in from_texts
+    embeddings = embedding.embed_documents(texts)
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_huggingface/embeddings/huggingface_endpoint.py", line 135, in embed_documents
+    responses = self.client.feature_extraction(text=texts, **_model_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/huggingface_hub/inference/_client.py", line 1103, in feature_extraction
+    response = self._inner_post(request_parameters)
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/huggingface_hub/inference/_client.py", line 283, in _inner_post
+    hf_raise_for_status(response)
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 901, in hf_raise_for_status
+    raise _format(HfHubHTTPError, str(e), response) from e
+huggingface_hub.errors.HfHubHTTPError: Server error '504 Gateway Time-out' for url 'https://router.huggingface.co/hf-inference/models/sentence-transformers/all-mpnet-base-v2/pipeline/feature-extraction' (Amz CF ID: uzBavzyhZb1Pv00tKFouo7njeecIvLGCWcC989jTOPlg4_23uUcFZw==)
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+2026-06-25 04:27:58,402 - ERROR - Failed to process and store PDF files. | Error :Server error '504 Gateway Time-out' for url 'https://router.huggingface.co/hf-inference/models/sentence-transformers/all-mpnet-base-v2/pipeline/feature-extraction' (Amz CF ID: uzBavzyhZb1Pv00tKFouo7njeecIvLGCWcC989jTOPlg4_23uUcFZw==)
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504 | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/data_loader.py | Line :18

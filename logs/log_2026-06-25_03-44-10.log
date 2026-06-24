@@ -1,0 +1,5 @@
+2026-06-25 03:44:10,761 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 03:44:10,762 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :1 validation error for HuggingFaceEndpointEmbeddings
+model_name
+  Extra inputs are not permitted [type=extra_forbidden, input_value='sentence-transformers/all-MiniLM-L6-v2', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :12

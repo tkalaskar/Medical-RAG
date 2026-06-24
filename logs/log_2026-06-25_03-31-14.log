@@ -1,0 +1,8 @@
+2026-06-25 03:31:14,162 - INFO - Loading PDF files from the specified path.
+2026-06-25 03:31:14,162 - INFO - Loading PDF file from path: data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 03:31:14,162 - ERROR - Failed to load PDF file from path: data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf | Error :Expected directory, got file: 'data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf' | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/pdf_loader.py | Line :22
+2026-06-25 03:31:14,162 - INFO - Loaded 0 PDF files from the specified path.
+2026-06-25 03:31:14,162 - ERROR - Failed to create text chunks from the documents | Error :'NoneType' object has no attribute 'tb_frame' | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/pdf_loader.py | Line :39
+2026-06-25 03:31:14,162 - INFO - Created 0 text chunks from the PDF files.
+2026-06-25 03:31:14,162 - ERROR - Failed to create new FAISS vector store with the specified text chunks. | Error :'NoneType' object has no attribute 'tb_frame' | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py | Line :31
+2026-06-25 03:31:14,162 - INFO - Vector store created successfully.
