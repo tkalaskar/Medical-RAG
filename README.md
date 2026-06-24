@@ -186,11 +186,8 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-The application directly uses Flask and Sentence Transformers. If they are not installed by your current dependency resolution, install them explicitly:
-
-```bash
-python -m pip install Flask sentence-transformers
-```
+The requirements file pins the dependency versions used to verify PDF ingestion,
+FAISS persistence, retrieval, and Hugging Face inference.
 
 ### 4. Configure environment variables
 
