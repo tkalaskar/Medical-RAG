@@ -14,5 +14,5 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 logs/
-
+RAG_Medical_Bot.egg-info/
 .DS_Store
