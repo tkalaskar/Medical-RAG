@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
-from markupsafe import Markup
+from markupsafe import Markup, escape
 
 load_dotenv()
 
@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 def nl2br(text):
-    return Markup(text).replace("\n", "<br>\n")
+    return Markup("<br>\n").join(escape(text).splitlines())
 
 app.jinja_env.filters["nl2br"] = nl2br
 
@@ -50,7 +50,6 @@ def clear():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050, debug=False, use_reloader=False)
-
 
 
 
