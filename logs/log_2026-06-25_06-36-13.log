@@ -1,0 +1,24 @@
+2026-06-25 06:36:13,321 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://172.16.0.100:5050
+2026-06-25 06:36:13,321 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-25 06:36:16,629 - INFO - 127.0.0.1 - - [25/Jun/2026 06:36:16] "[32mGET /clear HTTP/1.1[0m" 302 -
+2026-06-25 06:36:16,640 - INFO - 127.0.0.1 - - [25/Jun/2026 06:36:16] "GET / HTTP/1.1" 200 -
+2026-06-25 06:36:21,849 - INFO - Loading vector store...
+2026-06-25 06:36:21,850 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:36:23,923 - INFO - No device provided, using mps
+2026-06-25 06:36:24,477 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:36:28,906 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:36:28,906 - INFO - Loading FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:36:28,906 - INFO - Loading faiss.
+2026-06-25 06:36:28,941 - INFO - Successfully loaded faiss.
+2026-06-25 06:36:28,957 - INFO - FAISS vector store loaded successfully.
+2026-06-25 06:36:28,958 - INFO - Loading LLM with HuggingFaceHubEndpoint from HuggingFace repository: mistralai/Mistral-7B-Instruct-v0.3
+2026-06-25 06:36:29,230 - ERROR - Failed to load LLM with HuggingFaceHubEndpoint from HuggingFace repository: mistralai/Mistral-7B-Instruct-v0.3 | Error: 1 validation error for HuggingFaceHub
+__root__
+  Got invalid task None, currently only dict_keys(['translation', 'summarization', 'conversational', 'text-generation', 'text2text-generation']) are supported (type=value_error) | File: /Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/llm.py | Line: 12
+2026-06-25 06:36:29,231 - ERROR - Error creating QA chain: Error loading LLM: 1 validation error for HuggingFaceHub
+__root__
+  Got invalid task None, currently only dict_keys(['translation', 'summarization', 'conversational', 'text-generation', 'text2text-generation']) are supported (type=value_error)
+2026-06-25 06:36:29,232 - INFO - 127.0.0.1 - - [25/Jun/2026 06:36:29] "POST / HTTP/1.1" 200 -

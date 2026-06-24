@@ -1,0 +1,13 @@
+2026-06-25 06:39:42,155 - INFO - Loading vector store...
+2026-06-25 06:39:42,155 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:39:44,420 - INFO - No device provided, using mps
+2026-06-25 06:39:44,981 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:39:49,616 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:39:49,616 - INFO - Loading FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:39:49,617 - INFO - Loading faiss.
+2026-06-25 06:39:49,642 - INFO - Successfully loaded faiss.
+2026-06-25 06:39:49,660 - INFO - FAISS vector store loaded successfully.
+2026-06-25 06:39:49,660 - INFO - Loading LLM...
+2026-06-25 06:39:49,660 - INFO - Loading Hugging Face chat-completion model: Qwen/Qwen2.5-7B-Instruct
+2026-06-25 06:39:49,661 - INFO - LLM client initialized successfully.
+2026-06-25 06:39:49,661 - INFO - QA chain created successfully.

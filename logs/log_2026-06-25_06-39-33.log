@@ -1,0 +1,2 @@
+2026-06-25 06:39:33,224 - INFO - Loading Hugging Face chat-completion model: Qwen/Qwen2.5-7B-Instruct
+2026-06-25 06:39:33,225 - INFO - LLM client initialized successfully.

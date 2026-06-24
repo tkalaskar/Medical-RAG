@@ -1,0 +1,36 @@
+2026-06-25 06:15:21,179 - INFO - Loading PDF files from the specified path.
+2026-06-25 06:15:21,179 - INFO - Loading PDF file from path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 06:15:28,700 - INFO - Loaded 759 documents from the specified path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 06:15:28,700 - INFO - Loaded 759 PDF files from the specified path.
+2026-06-25 06:15:28,700 - INFO - Splitting documents into chunks with size 500 and overlap 50
+2026-06-25 06:15:28,776 - INFO - Created 7080 text chunks from the documents
+2026-06-25 06:15:28,776 - INFO - Creating FAISS vector store from 7080 text chunks.
+2026-06-25 06:15:28,776 - INFO - FAISS vector store output path: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:15:28,776 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:15:30,230 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error: name 'nn' is not defined | File: /Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line: 22
+2026-06-25 06:15:30,230 - ERROR - Failed to create FAISS vector store at: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 63, in create_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_community/embeddings/huggingface.py", line 64, in __init__
+    import sentence_transformers
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/__init__.py", line 15, in <module>
+    from sentence_transformers.base.sampler import DefaultBatchSampler, MultiDatasetDefaultBatchSampler
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/__init__.py", line 4, in <module>
+    from .model import BaseModel
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/model.py", line 34, in <module>
+    from sentence_transformers.base.peft_mixin import PeftAdapterMixin
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/peft_mixin.py", line 5, in <module>
+    from transformers.integrations.peft import PeftAdapterMixin as PeftAdapterMixinTransformers
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/integrations/peft.py", line 25, in <module>
+    from ..conversion_mapping import (
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/core_model_loading.py", line 33, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/integrations/accelerate.py", line 62, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+NameError: name 'nn' is not defined
+2026-06-25 06:15:30,231 - ERROR - Failed to process and store PDF files. | Error: name 'nn' is not defined | File: /Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/data_loader.py | Line: 18

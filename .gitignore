@@ -1,1 +1,19 @@
 .env
+# Python virtual environment
+venv/
+venv2/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs
+logs/
+
+# Vector database
+*.faiss
+*.pkl
+
+# OS files
+.DS_Store

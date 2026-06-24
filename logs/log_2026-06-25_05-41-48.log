@@ -1,0 +1,84 @@
+2026-06-25 05:41:48,103 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://172.16.0.100:5050
+2026-06-25 05:41:48,103 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-25 05:41:52,493 - INFO - Loading vector store...
+2026-06-25 05:41:52,494 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 05:42:17,113 - INFO - Loading vector store...
+2026-06-25 05:42:17,114 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 05:42:18,655 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :name 'nn' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :22
+2026-06-25 05:42:18,655 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :module 'sentence_transformers' has no attribute 'SentenceTransformer' | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :22
+2026-06-25 05:42:18,655 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 16, in load_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_community/embeddings/huggingface.py", line 64, in __init__
+    import sentence_transformers
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/__init__.py", line 15, in <module>
+    from sentence_transformers.base.sampler import DefaultBatchSampler, MultiDatasetDefaultBatchSampler
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/__init__.py", line 4, in <module>
+    from .model import BaseModel
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/model.py", line 34, in <module>
+    from sentence_transformers.base.peft_mixin import PeftAdapterMixin
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/peft_mixin.py", line 5, in <module>
+    from transformers.integrations.peft import PeftAdapterMixin as PeftAdapterMixinTransformers
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/integrations/peft.py", line 25, in <module>
+    from ..conversion_mapping import (
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/core_model_loading.py", line 33, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/integrations/accelerate.py", line 62, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+NameError: name 'nn' is not defined
+2026-06-25 05:42:18,656 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 16, in load_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_community/embeddings/huggingface.py", line 72, in __init__
+    self.client = sentence_transformers.SentenceTransformer(
+AttributeError: module 'sentence_transformers' has no attribute 'SentenceTransformer'
+2026-06-25 05:42:18,659 - ERROR - Failed to create QA chain | Error :name 'nn' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/retreiver.py | Line :35
+2026-06-25 05:42:18,659 - ERROR - Failed to create QA chain | Error :module 'sentence_transformers' has no attribute 'SentenceTransformer' | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/retreiver.py | Line :35
+2026-06-25 05:42:18,663 - INFO - 127.0.0.1 - - [25/Jun/2026 05:42:18] "POST / HTTP/1.1" 200 -
+2026-06-25 05:42:18,663 - INFO - 127.0.0.1 - - [25/Jun/2026 05:42:18] "POST / HTTP/1.1" 200 -
+2026-06-25 05:42:36,472 - INFO - 127.0.0.1 - - [25/Jun/2026 05:42:36] "GET / HTTP/1.1" 200 -
+2026-06-25 05:42:42,462 - INFO - Loading vector store...
+2026-06-25 05:42:42,462 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 05:42:42,473 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :name 'nn' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :22
+2026-06-25 05:42:42,474 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 16, in load_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_community/embeddings/huggingface.py", line 64, in __init__
+    import sentence_transformers
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/__init__.py", line 16, in <module>
+    from sentence_transformers.cross_encoder import (
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/cross_encoder/__init__.py", line 4, in <module>
+    from .model import CrossEncoder
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/cross_encoder/model.py", line 20, in <module>
+    from sentence_transformers.base.model import BaseModel
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/__init__.py", line 4, in <module>
+    from .model import BaseModel
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/model.py", line 34, in <module>
+    from sentence_transformers.base.peft_mixin import PeftAdapterMixin
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/sentence_transformers/base/peft_mixin.py", line 5, in <module>
+    from transformers.integrations.peft import PeftAdapterMixin as PeftAdapterMixinTransformers
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/integrations/peft.py", line 25, in <module>
+    from ..conversion_mapping import (
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/conversion_mapping.py", line 21, in <module>
+    from .core_model_loading import (
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/core_model_loading.py", line 33, in <module>
+    from .integrations.accelerate import get_device, offload_weight
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/transformers/integrations/accelerate.py", line 62, in <module>
+    ) -> tuple[int, list[str], list[nn.Module]]:
+NameError: name 'nn' is not defined
+2026-06-25 05:42:42,475 - ERROR - Failed to create QA chain | Error :name 'nn' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/retreiver.py | Line :35
+2026-06-25 05:42:42,477 - INFO - 127.0.0.1 - - [25/Jun/2026 05:42:42] "POST / HTTP/1.1" 200 -

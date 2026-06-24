@@ -1,0 +1,27 @@
+2026-06-25 05:40:32,636 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://172.16.0.100:5050
+2026-06-25 05:40:32,636 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-25 05:40:38,385 - INFO - Loading vector store...
+2026-06-25 05:40:38,386 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 05:40:38,386 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :1 validation error for HuggingFaceEmbeddings
+model
+  extra fields not permitted (type=value_error.extra) | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :22
+2026-06-25 05:40:38,386 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 16, in load_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/langchain_community/embeddings/huggingface.py", line 62, in __init__
+    super().__init__(**kwargs)
+  File "/usr/local/Caskroom/miniforge/base/lib/python3.10/site-packages/pydantic/v1/main.py", line 364, in __init__
+    raise validation_error
+pydantic.v1.error_wrappers.ValidationError: 1 validation error for HuggingFaceEmbeddings
+model
+  extra fields not permitted (type=value_error.extra)
+2026-06-25 05:40:38,392 - ERROR - Failed to create QA chain | Error :1 validation error for HuggingFaceEmbeddings
+model
+  extra fields not permitted (type=value_error.extra) | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/retreiver.py | Line :35
+2026-06-25 05:40:38,400 - INFO - 127.0.0.1 - - [25/Jun/2026 05:40:38] "POST / HTTP/1.1" 200 -

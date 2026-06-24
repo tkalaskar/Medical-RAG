@@ -7,3 +7,4 @@ langchain-huggingface
 huggingface-hub
 python-dotenv
 pypdf
+langchain==0.1.20

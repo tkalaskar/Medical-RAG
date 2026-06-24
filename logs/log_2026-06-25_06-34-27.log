@@ -1,0 +1,23 @@
+2026-06-25 06:34:27,545 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://172.16.0.100:5050
+2026-06-25 06:34:27,545 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-25 06:34:50,348 - INFO - 127.0.0.1 - - [25/Jun/2026 06:34:50] "GET / HTTP/1.1" 200 -
+2026-06-25 06:34:58,567 - INFO - Loading vector store...
+2026-06-25 06:34:58,568 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:35:00,436 - INFO - No device provided, using mps
+2026-06-25 06:35:01,078 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:35:05,746 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:35:05,747 - INFO - Loading FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:35:05,748 - INFO - Loading faiss.
+2026-06-25 06:35:05,801 - INFO - Successfully loaded faiss.
+2026-06-25 06:35:05,842 - INFO - FAISS vector store loaded successfully.
+2026-06-25 06:35:05,842 - INFO - Loading LLM with HuggingFaceHubEndpoint from HuggingFace repository: mistralai/Mistral-7B-Instruct-v0.3
+2026-06-25 06:35:05,844 - ERROR - Failed to load LLM with HuggingFaceHubEndpoint from HuggingFace repository: mistralai/Mistral-7B-Instruct-v0.3 | Error: 1 validation error for HuggingFaceHub
+__root__
+  Did not find huggingfacehub_api_token, please add an environment variable `HUGGINGFACEHUB_API_TOKEN` which contains it, or pass `huggingfacehub_api_token` as a named parameter. (type=value_error) | File: /Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/llm.py | Line: 12
+2026-06-25 06:35:05,844 - ERROR - Error creating QA chain: Error loading LLM: 1 validation error for HuggingFaceHub
+__root__
+  Did not find huggingfacehub_api_token, please add an environment variable `HUGGINGFACEHUB_API_TOKEN` which contains it, or pass `huggingfacehub_api_token` as a named parameter. (type=value_error)
+2026-06-25 06:35:05,845 - INFO - 127.0.0.1 - - [25/Jun/2026 06:35:05] "POST / HTTP/1.1" 200 -

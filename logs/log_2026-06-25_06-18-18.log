@@ -1,0 +1,11 @@
+2026-06-25 06:18:18,607 - INFO - Loading PDF files from the specified path.
+2026-06-25 06:18:18,607 - INFO - Loading PDF file from path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 06:18:18,607 - ERROR - Failed to load PDF file from path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf | Error: pypdf package not found, please install it with `pip install pypdf` | File: /Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/pdf_loader.py | Line: 20
+2026-06-25 06:18:18,607 - INFO - Loaded 0 PDF files from the specified path.
+2026-06-25 06:18:18,607 - ERROR - Failed to create text chunks from the documents | Error: No documents found | File: /Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/pdf_loader.py | Line: 39
+2026-06-25 06:18:18,607 - ERROR - Failed to create FAISS vector store at: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 52, in create_vector_store
+    raise ValueError("No text chunks were provided.")
+ValueError: No text chunks were provided.
+2026-06-25 06:18:18,607 - ERROR - Failed to process and store PDF files. | Error: No text chunks were provided. | File: /Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/data_loader.py | Line: 20

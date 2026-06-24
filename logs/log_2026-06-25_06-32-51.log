@@ -1,0 +1,16 @@
+2026-06-25 06:32:51,776 - INFO - Loading PDF files from the specified path.
+2026-06-25 06:32:51,776 - INFO - Loading PDF file from path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 06:33:00,589 - INFO - Loaded 759 documents from the specified path: /Users/tyrion/Documents/llmops/RAG Medical Bot/data/The_GALE_ENCYCLOPEDIA_of_MEDICINE_SECOND.pdf
+2026-06-25 06:33:00,589 - INFO - Loaded 759 PDF pages from the specified path.
+2026-06-25 06:33:00,589 - INFO - Splitting documents into chunks with size 500 and overlap 50
+2026-06-25 06:33:00,681 - INFO - Created 7080 text chunks from the documents
+2026-06-25 06:33:00,681 - INFO - Creating FAISS vector store from 7080 text chunks.
+2026-06-25 06:33:00,681 - INFO - FAISS vector store output path: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:33:00,681 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:33:02,880 - INFO - No device provided, using mps
+2026-06-25 06:33:03,415 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:33:07,964 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:33:30,385 - INFO - Loading faiss.
+2026-06-25 06:33:30,517 - INFO - Successfully loaded faiss.
+2026-06-25 06:33:30,645 - INFO - FAISS vector store created successfully at: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:33:30,645 - INFO - Vector store created successfully.

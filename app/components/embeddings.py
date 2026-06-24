@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from langchain_huggingface import HuggingFaceEndpointEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from app.common.logger import get_logger
 from app.common.custom_exception import CustomException
 
@@ -19,7 +19,7 @@ def get_embeddings():
         token = token.strip()
         logger.info("Initializing HuggingFaceHubEmbeddings with the specified model.")
 
-        model = HuggingFaceEndpointEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
+        model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         logger.info("HuggingFaceHubEmbeddings model initialized successfully.")
         return model
     except Exception as e:

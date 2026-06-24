@@ -1,0 +1,53 @@
+2026-06-25 06:02:41,517 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://172.16.0.100:5050
+2026-06-25 06:02:41,517 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-25 06:02:51,794 - INFO - Loading vector store...
+2026-06-25 06:02:51,794 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:02:54,380 - INFO - 127.0.0.1 - - [25/Jun/2026 06:02:54] "[32mGET /clear HTTP/1.1[0m" 302 -
+2026-06-25 06:02:54,388 - INFO - 127.0.0.1 - - [25/Jun/2026 06:02:54] "GET / HTTP/1.1" 200 -
+2026-06-25 06:02:55,157 - INFO - No device provided, using mps
+2026-06-25 06:02:56,820 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:02:59,919 - INFO - Loading vector store...
+2026-06-25 06:02:59,920 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:02:59,923 - INFO - No device provided, using mps
+2026-06-25 06:03:00,467 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:03:31,842 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:03:31,842 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:03:31,843 - INFO - Loading FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:03:31,843 - INFO - Loading FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:03:31,843 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 55, in dependable_faiss_import
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 30, in load_vector_store
+    vector_store = FAISS.load_local(
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 1092, in load_local
+    faiss = dependable_faiss_import()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 57, in dependable_faiss_import
+    raise ImportError(
+ImportError: Could not import faiss python package. Please install it with `pip install faiss-gpu` (for CUDA supported GPU) or `pip install faiss-cpu` (depending on Python version).
+2026-06-25 06:03:31,843 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 55, in dependable_faiss_import
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 30, in load_vector_store
+    vector_store = FAISS.load_local(
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 1092, in load_local
+    faiss = dependable_faiss_import()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 57, in dependable_faiss_import
+    raise ImportError(
+ImportError: Could not import faiss python package. Please install it with `pip install faiss-gpu` (for CUDA supported GPU) or `pip install faiss-cpu` (depending on Python version).
+2026-06-25 06:03:31,845 - INFO - 127.0.0.1 - - [25/Jun/2026 06:03:31] "POST / HTTP/1.1" 200 -
+2026-06-25 06:03:31,845 - INFO - 127.0.0.1 - - [25/Jun/2026 06:03:31] "POST / HTTP/1.1" 200 -

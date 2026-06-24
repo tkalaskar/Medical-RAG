@@ -1,0 +1,42 @@
+2026-06-25 05:38:19,273 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://172.16.0.100:5050
+2026-06-25 05:38:19,274 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-25 05:38:28,874 - INFO - Loading vector store...
+2026-06-25 05:38:28,875 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 05:38:28,875 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :name 'HuggingFaceEndpointEmbeddings' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :22
+2026-06-25 05:38:28,875 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 16, in load_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEndpointEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
+NameError: name 'HuggingFaceEndpointEmbeddings' is not defined
+2026-06-25 05:38:28,876 - ERROR - Failed to create QA chain | Error :name 'HuggingFaceEndpointEmbeddings' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/retreiver.py | Line :35
+2026-06-25 05:38:28,884 - INFO - 127.0.0.1 - - [25/Jun/2026 05:38:28] "POST / HTTP/1.1" 200 -
+2026-06-25 05:38:31,305 - INFO - Loading vector store...
+2026-06-25 05:38:31,306 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 05:38:31,306 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :name 'HuggingFaceEndpointEmbeddings' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :22
+2026-06-25 05:38:31,306 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 16, in load_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEndpointEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
+NameError: name 'HuggingFaceEndpointEmbeddings' is not defined
+2026-06-25 05:38:31,306 - ERROR - Failed to create QA chain | Error :name 'HuggingFaceEndpointEmbeddings' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/retreiver.py | Line :35
+2026-06-25 05:38:31,307 - INFO - 127.0.0.1 - - [25/Jun/2026 05:38:31] "POST / HTTP/1.1" 200 -
+2026-06-25 05:38:50,145 - INFO - 127.0.0.1 - - [25/Jun/2026 05:38:50] "GET / HTTP/1.1" 200 -
+2026-06-25 05:38:56,825 - INFO - Loading vector store...
+2026-06-25 05:38:56,825 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 05:38:56,825 - ERROR - Failed to initialize HuggingFaceHubEmbeddings with the specified model. | Error :name 'HuggingFaceEndpointEmbeddings' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py | Line :22
+2026-06-25 05:38:56,825 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 16, in load_vector_store
+    embedding_model = get_embeddings()
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/embeddings.py", line 22, in get_embeddings
+    model = HuggingFaceEndpointEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
+NameError: name 'HuggingFaceEndpointEmbeddings' is not defined
+2026-06-25 05:38:56,825 - ERROR - Failed to create QA chain | Error :name 'HuggingFaceEndpointEmbeddings' is not defined | File :/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/retreiver.py | Line :35
+2026-06-25 05:38:56,826 - INFO - 127.0.0.1 - - [25/Jun/2026 05:38:56] "POST / HTTP/1.1" 200 -

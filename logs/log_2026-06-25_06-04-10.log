@@ -1,0 +1,41 @@
+2026-06-25 06:04:10,448 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://172.16.0.100:5050
+2026-06-25 06:04:10,448 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-25 06:04:15,307 - INFO - Loading vector store...
+2026-06-25 06:04:15,307 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:04:16,755 - INFO - 127.0.0.1 - - [25/Jun/2026 06:04:16] "[32mGET /clear HTTP/1.1[0m" 302 -
+2026-06-25 06:04:16,781 - INFO - 127.0.0.1 - - [25/Jun/2026 06:04:16] "GET / HTTP/1.1" 200 -
+2026-06-25 06:04:17,117 - INFO - No device provided, using mps
+2026-06-25 06:04:17,781 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:04:22,994 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:04:22,995 - INFO - Loading FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:04:22,996 - INFO - Loading faiss.
+2026-06-25 06:04:25,236 - INFO - Successfully loaded faiss.
+2026-06-25 06:04:25,237 - INFO - Loading vector store...
+2026-06-25 06:04:25,237 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:04:25,238 - INFO - No device provided, using mps
+2026-06-25 06:04:25,245 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 30, in load_vector_store
+    vector_store = FAISS.load_local(
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 1097, in load_local
+    docstore, index_to_docstore_id = pickle.load(f)
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/pydantic/v1/main.py", line 440, in __setstate__
+    object_setattr(self, '__fields_set__', state['__fields_set__'])
+KeyError: '__fields_set__'
+2026-06-25 06:04:25,246 - INFO - 127.0.0.1 - - [25/Jun/2026 06:04:25] "POST / HTTP/1.1" 200 -
+2026-06-25 06:04:25,760 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:04:30,255 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
+2026-06-25 06:04:30,256 - INFO - Loading FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+2026-06-25 06:04:30,260 - ERROR - Failed to load FAISS vector store from: /Users/tyrion/Documents/llmops/RAG Medical Bot/vectorstore/db_faiss
+Traceback (most recent call last):
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/app/components/vector_store.py", line 30, in load_vector_store
+    vector_store = FAISS.load_local(
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/langchain_community/vectorstores/faiss.py", line 1097, in load_local
+    docstore, index_to_docstore_id = pickle.load(f)
+  File "/Users/tyrion/Documents/llmops/RAG Medical Bot/venv2/lib/python3.10/site-packages/pydantic/v1/main.py", line 440, in __setstate__
+    object_setattr(self, '__fields_set__', state['__fields_set__'])
+KeyError: '__fields_set__'
+2026-06-25 06:04:30,261 - INFO - 127.0.0.1 - - [25/Jun/2026 06:04:30] "POST / HTTP/1.1" 200 -

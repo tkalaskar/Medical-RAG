@@ -1,0 +1,4 @@
+2026-06-25 06:31:55,037 - INFO - Initializing HuggingFaceHubEmbeddings with the specified model.
+2026-06-25 06:31:57,622 - INFO - No device provided, using mps
+2026-06-25 06:31:58,165 - INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-25 06:32:02,815 - INFO - HuggingFaceHubEmbeddings model initialized successfully.
