@@ -84,11 +84,10 @@ The primary tradeoff is simplicity versus production robustness. Local persisten
 - **Concise responses:** the prompt asks for a focused answer in two to three lines.
 - **Persistent semantic search:** the PDF is indexed once and reused across application runs.
 - **Low-infrastructure local setup:** FAISS runs locally without a separate database service.
-- **Responsive medical dashboard:** the interface adapts from a split-screen desktop workspace to a streamlined mobile chat layout.
-- **Medical motion design:** animated ECG telemetry, pulse indicators, molecular forms, and a retrieval orbit reinforce system state without blocking interaction.
+- **Responsive chat interface:** the single-column layout adapts cleanly across desktop and mobile screens.
 - **Guided first question:** selectable prompt suggestions help users understand the intended scope of the assistant.
 - **Improved chat experience:** users can review the conversation, clear the session, submit with the keyboard, and see retrieval feedback while a request is processing.
-- **Accessible motion:** animations respect the operating system's `prefers-reduced-motion` setting.
+- **Restrained visual design:** the interface uses simple cards, clear spacing, and a small loading animation instead of decorative effects.
 - **Safe response rendering:** user and model content is HTML-escaped before line breaks are added.
 - **Configurable hosted model:** the Hugging Face model can be changed through an environment variable.
 - **Operational logging:** ingestion, embedding, retrieval, model initialization, and failures are written to timestamped log files.
@@ -96,29 +95,21 @@ The primary tradeoff is simplicity versus production robustness. Local persisten
 
 ## Frontend Experience
 
-The interface is designed as a calm clinical workspace rather than a generic
-chat page. On wider screens, the left panel presents the purpose of the system,
-reference statistics, an animated ECG visualization, and the medical-use
-disclaimer. The right panel keeps the assistant, conversation, suggested
-questions, and composer in one focused area.
-
-On mobile devices, secondary diagnostic decoration is removed and the layout
-becomes a single-column experience so the conversation and input remain the
-priority.
+The interface is intentionally lightweight: one centered chat card containing
+the introduction, conversation, suggested questions, composer, and medical-use
+disclaimer. The layout remains single-column on every screen size so the
+question-and-answer workflow stays prominent.
 
 The frontend includes:
 
-- a dark teal visual system with responsive typography and glass-like panels;
-- code-native SVG, CSS, and keyframe animations with no remote image or font
-  requests;
-- animated system status, ECG trace, heartbeat, orbital loader, and typing
-  feedback;
+- a neutral light theme with restrained teal accents;
+- code-native SVG and CSS with no remote image or font requests;
+- a small typing indicator for retrieval feedback;
 - suggested questions that populate the composer without immediately sending;
 - an autosizing textarea with a 1,000-character counter;
 - `Enter` to submit and `Shift+Enter` to insert a new line;
 - disabled submission state and retrieval progress feedback;
-- semantic landmarks, accessible labels, visible focus states, and reduced
-  motion support;
+- semantic landmarks, accessible labels, visible focus states, and reduced-motion support;
 - dedicated empty, conversation, loading, and error states.
 
 ## Tech Stack & Why
@@ -135,7 +126,7 @@ The frontend includes:
 | `Qwen/Qwen2.5-7B-Instruct` | Default answer model | Provides instruction-following chat completion through an available Hugging Face inference provider. |
 | Flask and Jinja | Web application | Server rendering keeps the request flow simple while still supporting sessions, errors, and conversation state. |
 | HTML5 and inline SVG | Interface structure and icons | Semantic markup and lightweight vector graphics avoid a separate icon or image dependency. |
-| CSS3 | Responsive design and animation | Custom properties, grid, media queries, and keyframes provide the visual system without a UI framework. |
+| CSS3 | Responsive styling | Custom properties, a small responsive layout, and minimal motion provide a clear interface without a UI framework. |
 | Vanilla JavaScript | Chat interactions | A small script handles prompt suggestions, textarea resizing, character counting, keyboard submission, and loading feedback. |
 | `python-dotenv` | Configuration | Keeps tokens and environment-specific model settings out of source code. |
 | Python logging | Diagnostics | Preserves stage-by-stage evidence when ingestion or inference fails. |
@@ -449,7 +440,7 @@ Press `Enter` to submit or `Shift+Enter` to add another line.
 │   │   └── llm.py              # Hugging Face chat-completion adapter
 │   ├── config/config.py        # Paths, model ID, and chunk settings
 │   ├── static/
-│   │   ├── css/styles.css      # Responsive design and medical animations
+│   │   ├── css/styles.css      # Lightweight responsive interface
 │   │   └── js/app.js           # Composer and loading interactions
 │   └── templates/index.html    # Accessible chat interface and UI states
 ├── data/                       # Reference document
@@ -468,8 +459,8 @@ The frontend was checked in rendered browser sessions at:
 
 - **1280 × 720:** the desktop workspace, all suggestions, and composer fit
   without page-level scrolling;
-- **390 × 844:** the mobile layout has no horizontal overflow and prioritizes
-  the chat over secondary visualizations.
+- **390 × 844:** the mobile layout has no horizontal overflow and keeps the
+  complete chat workflow within the viewport.
 
 The verification also covered:
 

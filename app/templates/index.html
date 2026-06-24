@@ -3,279 +3,156 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#071b22" />
+    <meta name="theme-color" content="#0f766e" />
     <meta
         name="description"
         content="A retrieval-augmented medical assistant grounded in a trusted reference document."
     />
-    <title>MedQuery AI · Grounded Medical Assistant</title>
+    <title>MedQuery · Medical Reference Assistant</title>
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/styles.css') }}"
     />
 </head>
 <body>
-    <div class="ambient-background" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-one"></div>
-        <div class="ambient-orb ambient-orb-two"></div>
-        <div class="medical-grid"></div>
-        <div class="molecule molecule-one">
-            <span></span><span></span><span></span><span></span>
-        </div>
-        <div class="molecule molecule-two">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="MedQuery home">
+            <span class="brand-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9.5 4h5v5h5v5h-5v5h-5v-5h-5V9h5V4Z"></path>
+                </svg>
+            </span>
+            <span>
+                <strong>MedQuery</strong>
+                <small>Medical reference assistant</small>
+            </span>
+        </a>
 
-    <main class="app-shell">
-        <header class="topbar">
-            <a class="brand" href="{{ url_for('index') }}" aria-label="MedQuery AI home">
-                <span class="brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" role="img">
-                        <path d="M18 8h12v10h10v12H30v10H18V30H8V18h10V8Z"></path>
-                        <path class="brand-pulse" d="M10 25h7l3-7 5 14 4-7h9"></path>
-                    </svg>
-                </span>
-                <span class="brand-copy">
-                    <strong>MedQuery</strong>
-                    <small>Clinical reference AI</small>
-                </span>
-            </a>
+        <span class="status">
+            <span aria-hidden="true"></span>
+            Reference ready
+        </span>
+    </header>
 
-            <div class="topbar-status" aria-label="System status">
-                <span class="status-pulse" aria-hidden="true"></span>
-                <span>Reference system online</span>
-            </div>
-        </header>
-
-        <section class="workspace">
-            <aside class="insight-panel" aria-label="Assistant information">
-                <div class="hero-copy">
-                    <span class="eyebrow">
-                        <span class="eyebrow-icon" aria-hidden="true">✦</span>
-                        Evidence-guided answers
-                    </span>
-                    <h1>Medical context,<br /><em>made clearer.</em></h1>
+    <main class="page">
+        <section class="chat-card" aria-label="Medical assistant chat">
+            <header class="chat-header">
+                <div>
+                    <p class="eyebrow">Grounded medical Q&amp;A</p>
+                    <h1>How can I help?</h1>
                     <p>
-                        Ask health-related questions and receive concise answers
-                        grounded in the included medical reference.
+                        Ask a focused medical question. Answers are based on the
+                        included reference library.
                     </p>
                 </div>
 
-                <div class="vitals-card">
-                    <div class="vitals-heading">
-                        <span>
-                            <small>Knowledge pulse</small>
-                            <strong>Active retrieval</strong>
-                        </span>
-                        <span class="heart-orb" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path>
-                            </svg>
-                        </span>
-                    </div>
-
-                    <div class="ecg-window" aria-hidden="true">
-                        <div class="ecg-grid"></div>
-                        <svg class="ecg-line" viewBox="0 0 500 90" preserveAspectRatio="none">
-                            <path d="M0 47h74l12-1 10-24 14 54 17-66 17 74 16-37h39l10-1 10-20 14 43 13-51 15 58 14-30h43l10-1 11-22 14 48 14-56 15 62 15-32h53"></path>
-                        </svg>
-                        <div class="ecg-scan"></div>
-                    </div>
-
-                    <div class="vitals-meta">
-                        <div>
-                            <strong>7,080</strong>
-                            <span>Indexed passages</span>
-                        </div>
-                        <div>
-                            <strong>759</strong>
-                            <span>Reference pages</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="trust-note">
-                    <span class="trust-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 3 4.5 6v5.5c0 4.8 3.2 8.7 7.5 9.8 4.3-1.1 7.5-5 7.5-9.8V6L12 3Z"></path>
-                            <path d="m8.5 12 2.2 2.2 4.8-5"></path>
-                        </svg>
-                    </span>
-                    <p>
-                        <strong>Educational guidance only.</strong>
-                        This assistant does not replace professional medical care.
-                    </p>
-                </div>
-            </aside>
-
-            <section class="chat-panel" aria-label="Medical assistant chat">
-                <div class="chat-header">
-                    <div class="assistant-identity">
-                        <div class="assistant-avatar" aria-hidden="true">
-                            <div class="avatar-ring"></div>
-                            <svg viewBox="0 0 40 40">
-                                <path d="M20 8v24M8 20h24"></path>
-                                <circle cx="20" cy="20" r="15"></circle>
-                            </svg>
-                        </div>
-                        <div>
-                            <h2>Medical Assistant</h2>
-                            <p><span></span> Grounded in your reference library</p>
-                        </div>
-                    </div>
-
-                    {% if messages %}
-                        <form method="get" action="{{ url_for('clear') }}">
-                            <button class="clear-button" type="submit" aria-label="Clear conversation">
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M3 6h18M8 6V4h8v2m-9 0 1 14h8l1-14M10 10v6m4-6v6"></path>
-                                </svg>
-                                <span>Clear</span>
-                            </button>
-                        </form>
-                    {% endif %}
-                </div>
-
-                <div class="conversation" id="chat-box" aria-live="polite">
-                    {% if error %}
-                        <div class="error-banner" role="alert">
-                            <span aria-hidden="true">!</span>
-                            <div>
-                                <strong>I couldn't complete that request.</strong>
-                                <p>{{ error }}</p>
-                            </div>
-                        </div>
-                    {% endif %}
-
-                    {% if not messages %}
-                        <div class="welcome-state">
-                            <div class="medical-loader" aria-hidden="true">
-                                <div class="loader-core">
-                                    <svg viewBox="0 0 60 60">
-                                        <path d="M25 13h10v12h12v10H35v12H25V35H13V25h12V13Z"></path>
-                                    </svg>
-                                </div>
-                                <span class="orbit orbit-one"></span>
-                                <span class="orbit orbit-two"></span>
-                                <span class="orbit-dot"></span>
-                            </div>
-                            <span class="welcome-kicker">Your reference is ready</span>
-                            <h2>What would you like to understand?</h2>
-                            <p>
-                                Try a focused question about a symptom, condition,
-                                treatment concept, or medical term.
-                            </p>
-
-                            <div class="prompt-suggestions" aria-label="Suggested questions">
-                                <button type="button" class="suggestion-chip" data-prompt="What are the common symptoms of iron deficiency anemia?">
-                                    <span class="chip-icon chip-icon-red" aria-hidden="true">♥</span>
-                                    <span>
-                                        <strong>Anemia symptoms</strong>
-                                        <small>Common warning signs</small>
-                                    </span>
-                                    <span class="chip-arrow" aria-hidden="true">→</span>
-                                </button>
-                                <button type="button" class="suggestion-chip" data-prompt="What is the difference between type 1 and type 2 diabetes?">
-                                    <span class="chip-icon chip-icon-blue" aria-hidden="true">⌁</span>
-                                    <span>
-                                        <strong>Diabetes types</strong>
-                                        <small>Understand the difference</small>
-                                    </span>
-                                    <span class="chip-arrow" aria-hidden="true">→</span>
-                                </button>
-                                <button type="button" class="suggestion-chip" data-prompt="What can cause persistent headaches?">
-                                    <span class="chip-icon chip-icon-violet" aria-hidden="true">✧</span>
-                                    <span>
-                                        <strong>Headache causes</strong>
-                                        <small>Explore possible factors</small>
-                                    </span>
-                                    <span class="chip-arrow" aria-hidden="true">→</span>
-                                </button>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="message-list">
-                            {% for msg in messages %}
-                                <article class="message-row {{ msg.role }}">
-                                    <div class="message-avatar" aria-hidden="true">
-                                        {% if msg.role == "assistant" %}
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M12 5v14M5 12h14"></path>
-                                                <circle cx="12" cy="12" r="10"></circle>
-                                            </svg>
-                                        {% else %}
-                                            <svg viewBox="0 0 24 24">
-                                                <circle cx="12" cy="8" r="4"></circle>
-                                                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
-                                            </svg>
-                                        {% endif %}
-                                    </div>
-                                    <div class="message-content">
-                                        <div class="message-meta">
-                                            <strong>
-                                                {{ "Medical Assistant" if msg.role == "assistant" else "You" }}
-                                            </strong>
-                                            <span>{{ "Reference response" if msg.role == "assistant" else "Question" }}</span>
-                                        </div>
-                                        <div class="message-bubble">{{ msg.content | nl2br }}</div>
-                                    </div>
-                                </article>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-
-                    <div class="typing-state" id="typing-state" hidden>
-                        <div class="message-avatar" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 5v14M5 12h14"></path>
-                                <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                        </div>
-                        <div class="typing-bubble">
-                            <span></span><span></span><span></span>
-                            <small>Searching the medical reference…</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="composer-wrap">
-                    <form
-                        class="composer"
-                        id="question-form"
-                        method="post"
-                        action="{{ url_for('index') }}"
-                    >
-                        <label class="sr-only" for="prompt">Ask a medical question</label>
-                        <textarea
-                            id="prompt"
-                            name="prompt"
-                            rows="1"
-                            maxlength="1000"
-                            placeholder="Ask a medical question…"
-                            autocomplete="off"
-                            required
-                        ></textarea>
-                        <div class="composer-actions">
-                            <span class="character-count" id="character-count">0 / 1000</span>
-                            <button class="send-button" type="submit" aria-label="Send question">
-                                <span>Ask AI</span>
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="m5 12 14-7-4 14-3-6-7-1Z"></path>
-                                    <path d="m12 13 7-8"></path>
-                                </svg>
-                            </button>
-                        </div>
+                {% if messages %}
+                    <form method="get" action="{{ url_for('clear') }}">
+                        <button class="clear-button" type="submit">
+                            Clear chat
+                        </button>
                     </form>
-                    <p class="composer-note">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"></path>
-                            <path d="M12 16v-4m0-4h.01"></path>
-                        </svg>
-                        AI responses may be incomplete. Consult a healthcare professional for medical decisions.
-                    </p>
+                {% endif %}
+            </header>
+
+            <div class="conversation" id="chat-box" aria-live="polite">
+                {% if error %}
+                    <div class="error-banner" role="alert">
+                        <strong>Unable to complete the request.</strong>
+                        <p>{{ error }}</p>
+                    </div>
+                {% endif %}
+
+                {% if not messages %}
+                    <div class="empty-state">
+                        <span class="empty-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9.5 4h5v5h5v5h-5v5h-5v-5h-5V9h5V4Z"></path>
+                            </svg>
+                        </span>
+                        <h2>Start with a question</h2>
+                        <p>
+                            You can ask about symptoms, conditions, treatments,
+                            or medical terminology.
+                        </p>
+
+                        <div class="suggestions" aria-label="Suggested questions">
+                            <button
+                                type="button"
+                                data-prompt="What are the common symptoms of iron deficiency anemia?"
+                            >
+                                Symptoms of anemia
+                            </button>
+                            <button
+                                type="button"
+                                data-prompt="What is the difference between type 1 and type 2 diabetes?"
+                            >
+                                Types of diabetes
+                            </button>
+                            <button
+                                type="button"
+                                data-prompt="What can cause persistent headaches?"
+                            >
+                                Causes of headaches
+                            </button>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="message-list">
+                        {% for msg in messages %}
+                            <article class="message {{ msg.role }}">
+                                <div class="message-heading">
+                                    <strong>
+                                        {{ "Medical Assistant" if msg.role == "assistant" else "You" }}
+                                    </strong>
+                                </div>
+                                <div class="message-body">{{ msg.content | nl2br }}</div>
+                            </article>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="typing-state" id="typing-state" hidden>
+                    <span></span><span></span><span></span>
+                    <small>Searching the reference…</small>
                 </div>
-            </section>
+            </div>
+
+            <footer class="composer-area">
+                <form
+                    class="composer"
+                    id="question-form"
+                    method="post"
+                    action="{{ url_for('index') }}"
+                >
+                    <label class="sr-only" for="prompt">Ask a medical question</label>
+                    <textarea
+                        id="prompt"
+                        name="prompt"
+                        rows="1"
+                        maxlength="1000"
+                        placeholder="Ask a medical question…"
+                        autocomplete="off"
+                        required
+                    ></textarea>
+
+                    <div class="composer-footer">
+                        <span id="character-count">0 / 1000</span>
+                        <button type="submit">
+                            <span>Send</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="m5 12 14-7-4 14-3-6-7-1Z"></path>
+                                <path d="m12 13 7-8"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+
+                <p class="disclaimer">
+                    Educational use only. Consult a healthcare professional for
+                    medical advice, diagnosis, or treatment.
+                </p>
+            </footer>
         </section>
     </main>
 
