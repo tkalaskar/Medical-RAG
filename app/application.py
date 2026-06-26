@@ -47,7 +47,10 @@ def clear():
     session.pop("messages", None)
     return redirect(url_for("index"))
 
-
+@app.get("/health")
+def health():
+    return {"status": "healthy"}, 200
+    
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050, debug=False, use_reloader=False)
 
