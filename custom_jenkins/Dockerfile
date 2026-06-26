@@ -28,9 +28,9 @@ RUN apt-get update \
     && rm -rf /tmp/aws /tmp/awscliv2.zip /tmp/trivy.key \
     && rm -rf /var/lib/apt/lists/*
 
-# Add Jenkins user to the Docker group (create if it doesn't exist)
+# Add Jenkins user to groups that can access the mounted Docker socket.
 RUN groupadd -f docker && \
-    usermod -aG docker jenkins
+    usermod -aG docker,root jenkins
 
 # Switch back to the Jenkins user
 USER jenkins

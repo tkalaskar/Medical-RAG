@@ -330,11 +330,42 @@ git clone <your-repository-url>
 cd "RAG Medical Bot"
 ```
 
-#### 2. Create and activate a virtual environment
+#### 2. Create and activate a local Python environment
+
+On macOS/Linux with Miniforge, Conda, or Mamba, create a project-local
+environment:
 
 ```bash
-python3.10 -m venv .venv
-source .venv/bin/activate
+mamba create -y -p "$(pwd)/.venv" python=3.10 pip
+```
+
+Use `conda create` with the same arguments if `mamba` is not installed.
+
+If the `.venv` environment already exists, skip the create command and activate
+it directly:
+
+```bash
+source /opt/miniforge3/bin/activate "$(pwd)/.venv"
+```
+
+This project environment is a Conda/Mamba prefix, so `.venv/bin/activate` may
+not exist. Use Conda's activation script instead. If Miniforge is installed in a
+different location, initialize Conda for the current shell and activate the
+prefix:
+
+```bash
+eval "$(conda shell.zsh hook)"
+conda activate "$(pwd)/.venv"
+```
+
+Replace `zsh` with `bash` if you use Bash.
+
+Avoid installing dependencies into the Miniforge base environment. If Conda or
+Mamba reports permission errors for its package cache, create the environment
+with a project-local cache:
+
+```bash
+CONDA_PKGS_DIRS="$(pwd)/.conda-pkgs" mamba create -y -p "$(pwd)/.venv" python=3.10 pip
 ```
 
 On Windows:
