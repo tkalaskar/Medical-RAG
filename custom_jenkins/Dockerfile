@@ -16,7 +16,7 @@ RUN apt-get update \
     && gpg --dearmor -o /usr/share/keyrings/trivy.gpg /tmp/trivy.key \
     && echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" > /etc/apt/sources.list.d/trivy.list \
     && apt-get update \
-    && apt-get install -y --no-install-recommends docker-ce-cli trivy \
+    && apt-get install -y --no-install-recommends docker-ce-cli docker-buildx-plugin trivy \
     && case "$(dpkg --print-architecture)" in \
         amd64) aws_arch="x86_64" ;; \
         arm64) aws_arch="aarch64" ;; \

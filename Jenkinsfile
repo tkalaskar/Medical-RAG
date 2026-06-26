@@ -5,6 +5,8 @@ pipeline {
         AWS_REGION = 'ap-southeast-2'
         ECR_REPO = 'my-repo'
         IMAGE_TAG = 'latest'
+        IMAGE_PLATFORM = 'linux/amd64'
+        ECS_CLUSTER = 'llmops-medical-service'
         SERVICE_NAME = 'llmops-medical-service'
     }
 
@@ -28,7 +30,8 @@ pipeline {
 
                         sh """
                         aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ecrUrl}
-                        docker build -t ${env.ECR_REPO}:${IMAGE_TAG} .
+                        docker buildx version
+                        docker buildx build --platform ${IMAGE_PLATFORM} -t ${env.ECR_REPO}:${IMAGE_TAG} --load .
                         trivy image --severity HIGH,CRITICAL --format json -o trivy-report.json ${env.ECR_REPO}:${IMAGE_TAG} || true
                         docker tag ${env.ECR_REPO}:${IMAGE_TAG} ${imageFullTag}
                         docker push ${imageFullTag}
@@ -40,25 +43,27 @@ pipeline {
             }
         }
 
-         stage('Deploy to AWS App Runner') {
+        stage('Deploy to ECS') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-token']]) {
                     script {
-                        def accountId = sh(script: "aws sts get-caller-identity --query Account --output text", returnStdout: true).trim()
-                        def ecrUrl = "${accountId}.dkr.ecr.${env.AWS_REGION}.amazonaws.com/${env.ECR_REPO}"
-                        def imageFullTag = "${ecrUrl}:${IMAGE_TAG}"
-
-                        echo "Triggering deployment to AWS App Runner..."
+                        echo "Triggering ECS deployment..."
 
                         sh """
-                        SERVICE_ARN=\$(aws apprunner list-services --query "ServiceSummaryList[?ServiceName=='${SERVICE_NAME}'].ServiceArn" --output text --region ${AWS_REGION})
-                        echo "Found App Runner Service ARN: \$SERVICE_ARN"
+                        aws ecs update-service \
+                          --cluster ${ECS_CLUSTER} \
+                          --service ${SERVICE_NAME} \
+                          --force-new-deployment \
+                          --region ${AWS_REGION}
 
-                        aws apprunner start-deployment --service-arn \$SERVICE_ARN --region ${AWS_REGION}
+                        aws ecs wait services-stable \
+                          --cluster ${ECS_CLUSTER} \
+                          --services ${SERVICE_NAME} \
+                          --region ${AWS_REGION}
                         """
                     }
                 }
             }
-        } 
+        }
     }
 }
