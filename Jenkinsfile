@@ -6,7 +6,7 @@ pipeline {
         ECR_REPO = 'my-repo'
         IMAGE_TAG = 'latest'
         IMAGE_PLATFORM = 'linux/amd64'
-        ECS_CLUSTER = 'llmops-medical-service'
+        ECS_CLUSTER = 'default'
         SERVICE_NAME = 'llmops-medical-service'
     }
 
